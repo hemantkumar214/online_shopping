@@ -1,0 +1,54 @@
+<div class="container" style="margin-top: 70px;">
+	
+	<div class="row">
+		<div class="col-md-4">
+			<div class="prod-img-div">
+				<img class="prod-image-size" src="<%= @product.image %>">
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div >
+					<h1 itemprop="name" style="font-size: 21px; font-weight: normal"> <%= @product.name %> </h1>
+					<hr class="pro-name">
+					<div style="margin-top:10px; font-size: 15px;">
+						<span><%= @product.description %></span>
+					</div><br><br>
+					<% enable=1 %>
+					<% if(!check_availabilty(@product.id)) %>
+					<% enable=0 %>
+					<div style="color:red;"><strong>OUT OF STOCK</strong></div>
+				  <% end -%>					
+					<div style="margin-top:50px; margin-left:50px; font-size: 15px;">				
+						<%= button_to  "Add IN Cart", homes_add_in_cart_path(@product), remote: true, :disabled => enable== 0, :class=>"btn btn-primary"  %>					
+					</div>
+					<div style="margin-top:20px; margin-left:50px; font-size: 15px;">
+						<ul class="buy-view-list">
+							<li>
+							Call
+							<span class="fnt-bold">7204467210</span>
+							<span class="fnt-bold"> (toll free)</span>
+								for assistance from our product expert.
+							</li>
+							<li class="" data-cod-listener-attached="true">
+								<strong>Cash</strong>
+								on Delivery
+							</li>
+							<li class="" data-cod-listener-attached="true">
+								<strong>EMI</strong>
+								option
+							</li>
+							<li class="" data-cod-listener-attached="true">
+								<strong>30 days</strong>
+								replacement Gaurantee
+							</li>							
+						<ul>
+							
+					</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+		</div>
+		
+	</div>
+</div>

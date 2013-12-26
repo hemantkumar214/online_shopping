@@ -1,7 +1,7 @@
 <%= form_for @product  do |f| %>
 <%= f.label :category %>
 <div class="controls mrg_top">
-	<%= f.collection_select :category_id, Category.all, :id, :name,  {:prompt => "Select Sub Category"},{ "style" => "width:200px;height:30px" } %>
+	<%= f.collection_select :category_id,Category.where('id not in(?)', Category.all.map(&:parent_id)- [nil]), :id, :name,  {:prompt => "Select Sub Category"},{ "style" => "width:200px;height:30px" } %>
 	</select>
 </div>
 <%= f.label :name %>

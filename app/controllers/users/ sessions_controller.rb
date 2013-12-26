@@ -1,10 +1,11 @@
-class Users::SessionsController < Devise::SessionsController
+class Users::SessionsController < DeviseController
   def destroy
     super
     raise "error"
   end
 
   def new  	
+
   end
   def create
   	self.resource = warden.authenticate!(auth_options)

@@ -1,13 +1,13 @@
-  <script type="text/javascript">
-       $.validate(); 
-    </script>
+<script type="text/javascript">
+  $.validate(); 
+</script>
 <!-- form for address details of users with previous addresses  -->
 <div class="modal-body row">
   <div class="col-md-6">
   	<% if user_signed_in?  %>
   	  <h3>Existing Adresses</h3>    
       <% Address.where(:user_id=>current_user.id).to_a.each do |address|  %>
-        <%= link_to(bills_create_path(address_id: address.id)) do %>
+        <%= link_to bills_create_path(address_id: address.id), :remote=>true do %>
           <%= address.address %>
       	  <%= address.landmark %><br/>
       		<%= "#{address.city} #{address.state}" %><br/>  		
@@ -21,7 +21,7 @@
   <!-- new shipping address details  -->
   <div class="col-md-6">
   	<h3> New Shipping Address</h3>
-    <%= form_for @address  do |f| %>
+    <%= form_for @address, :remote=>true do |f| %>
       <div>      
       <%= f.text_area :address,  :class=> "form-control ",:placeholder=>"Address", 'data-validation' => "required" %>
       </div>

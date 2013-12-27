@@ -1,0 +1,24 @@
+<br>
+<div class="" style="background-color: #424242; width=70px;height: 40px; margin-top: 20px;">
+  <h2 class="header" style="background-color: #424242; height: 38px;">
+  <span style="text-transform: uppercase; font-size: 16px; color:white; margin-left: 10px;">
+    <%= link_to 'Email Address', new_user_registration_path, :remote=> true, :class=>"emailAddress" %>
+    <%= link_to_unless !user_signed_in?, 'Shipping Address', new_address_path, :remote=> true, :class=>"shippingAddress" %> 
+  </span>
+  <span style="font-size: 14px; color: #ffffff; margin-right: 10px; float: right; margin-top: 12px;">
+  </span>
+ </h2>
+</div>
+<div id="details">    	
+</div>      
+
+<!-- script for clicking on shippingaddress and emailaddress buttons     -->
+<script type="text/javascript">
+  $(document).ready(function(){
+  	<% if user_signed_in?  %>
+  		$(".shippingAddress").click();
+  		<% else %>
+  		$(".emailAddress").click();
+	  <% end -%>
+  });
+</script>

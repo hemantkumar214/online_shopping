@@ -1,0 +1,17 @@
+<br><br><br><br>
+
+
+Bill id:<%= @bill.id %>
+<br>
+User Name :<%= @bill.user.name %>
+<br>
+       
+Bill_detail:<%= @bill_detail = BillDetail.find_by_bill_id(@bill.id) %>	
+<%  BillDetail.where(bill_id: @bill.id).each do |billdetailarray| %>
+	<%= billdetailarray.id  %>
+	Product_detail:<%= @product_detail = ProductDetail.find(@bill_detail.product_detail_id) %>
+	product : <%= @product = Product.find(@product_detail.product_id) %>
+	<br>
+<% end -%>
+<br>
+<%= link_to 'Back', bills_path %>

@@ -1,8 +1,11 @@
 class BillsController < ApplicationController
   def index
+    if current_user.role_id==1
   	@bills=Bill.all
+  else
+    @bills=Bill.where(user_id: current_user.id)
   end
-
+end
   def new  	
   end
   # action to create bill with bill details 
@@ -32,7 +35,11 @@ class BillsController < ApplicationController
   def destroy
     @bill=Bill.find(params[:id])
   	@bill.destroy
-    redirect_to bills_path
+    if current_user.role_id==1
+    @bills=Bill.all
+    else
+      @bills=Bill.where(user_id: current_user.id)
+    end    
   end
 
   def show

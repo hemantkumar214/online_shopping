@@ -7,10 +7,11 @@
 					<span><%= @cat_name %> brands</span>
 				</div>
 				<div class="nav-section-cat-list">
-			  	<% @categories2.each do |category| %>
-							<a class="hov-col cont nav-section-item tpadding5 bpadding5 " href="/category_product/<%= category.name %>"  style="display: block; ">
-								<%= category.name %>
-							</a>
+			  	<% @categories2.each do |category| %>							
+						<%= link_to(url_for("/category_product/#{category.name}"),:remote => true, :class=> "hov-col cont nav-section-item tpadding5 bpadding5", :style=>'display: block;') do %>
+						<%= category.name %>
+						<% end %>
+							
 					<% end %>
 				</div>
 			</div>

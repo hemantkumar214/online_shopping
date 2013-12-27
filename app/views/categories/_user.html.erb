@@ -39,9 +39,9 @@
             <tr>
               <td><%= category.name %></td>
               <td><%= get_parent_name(category.parent_id) %></td>
-              <td><%= link_to 'Show', category, :class=>"mrg_left" %></td>
-              <td><%= link_to 'Edit', edit_category_path(category), :class=>"mrg_left" %></td>
-              <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mrg_left" %></td>
+              <td><%= link_to 'Show', category,:remote=>true, :class=>"mrg_left" %></td>
+              <td><%= link_to 'Edit', edit_category_path(category),:remote=>true, :class=>"mrg_left" %></td>
+              <td><%= link_to 'Destroy', category, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"mrg_left" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -49,7 +49,7 @@
 
       <br>
 
-      <%= link_to 'New Category', new_category_path %>
+      <%= link_to 'New Category', new_category_path,:remote=>true %>
     </div>
     <div class="col-md-2"></div>
   </div>

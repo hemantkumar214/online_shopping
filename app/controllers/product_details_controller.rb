@@ -23,7 +23,7 @@ class ProductDetailsController < ApplicationController
   def destroy
   	@product_detail = ProductDetail.find(params[:id])
   	@product_detail.destroy
-  	redirect_to product_details_path
+    @product_details = ProductDetail.all  	
   end
 
   def update

@@ -40,10 +40,16 @@ class HomesController < ApplicationController
   end
 
   # function to update the session and add in cart
-  def add_in_cart
-    product_id=params[:id].to_i    
-    if(check_availabilty(product_id))
-      update_session(product_id)
+  def add_in_cart    
+    product_id=params[:id].to_i
+    total_request=1
+    update_through_cart=0     
+    if params.has_key?(:quant)     
+      total_request=params[:quant][:total_request].to_i
+      update_through_cart=1    
+    end    
+    if(check_availabilty(product_id,total_request,update_through_cart))
+      update_session(product_id,total_request,update_through_cart)
     else
       flash[:notice] = "#{Product.find(product_id).name} is not available in this quantity"            
     end
@@ -51,15 +57,17 @@ class HomesController < ApplicationController
 
 
 ## checking tyhe availabilty
-  def check_availabilty(product_id)    
-    requested_product=0    
+  def check_availabilty(product_id,total_request=1,update_through_cart=0) 
+    requested_product=0 
+    requested_product += total_request    
     session[:temporary_shopping_cart].each do |product_hash|      
       if product_hash.keys[0].to_i==product_id.to_i
-        requested_product=product_hash.values[0].to_i
+        if update_through_cart==0
+          requested_product=product_hash.values[0].to_i+1
+        end
         break        
       end
-    end
-    requested_product += 1  
+    end      
     available_product=ProductDetail.where(:product_id=>product_id, available: 1).count
     if requested_product > available_product      
       return false
@@ -68,15 +76,19 @@ class HomesController < ApplicationController
   end
 
   ## update the session
-  def update_session(product_id)
+  def update_session(product_id,total_request,update_through_cart)
     if !session[:temporary_shopping_cart]
       session[:temporary_shopping_cart] =[]  
     end 
     flag=0 
     session[:temporary_shopping_cart].each do |product_hash| 
       if (product_hash.has_key?(product_id)) 
-        flag=1 
-        product_hash[product_hash.keys[0]]=product_hash.values[0]+1 
+        flag=1
+        if update_through_cart==0 
+          product_hash[product_hash.keys[0]]=product_hash.values[0]+1
+        else
+          product_hash[product_hash.keys[0]]=total_request
+        end
       end  
     end  
     if flag==0 

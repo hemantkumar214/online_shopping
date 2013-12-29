@@ -28,6 +28,7 @@ end
         @bill.total_amount=total_amount
         @bill.save!        
       end
+      session[:temporary_shopping_cart]=[] 
       redirect_to bills_show_path :id => @bill.id 
     end    
   end

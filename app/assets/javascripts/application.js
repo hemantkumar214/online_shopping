@@ -15,3 +15,18 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+// added javasript for null input, button should be disable.
+$( document ).ready(function() {
+	if($('#search').val() == "")
+	{
+    $('.btn.btn-primary.btn-size').attr('disabled', true);
+  }
+
+  $('#search').keyup(function(){
+    if($('#search').val() !=  "") 
+      $('.btn.btn-primary.btn-size').attr('disabled', false);    
+		else
+   		$('.btn.btn-primary.btn-size').attr('disabled', true);   
+	});
+});

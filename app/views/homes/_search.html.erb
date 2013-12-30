@@ -1,0 +1,71 @@
+<div class="container" style="margin-top: 70px;">
+	<div class="row">
+		<div class="col-md-2" style="margin-top: 13px;">
+			
+		</div>
+		<div class="col-md-8" style="margin-top: 13px;">
+			<div class="nav-section-cat-list">
+				<% if @search_sub_cats %>
+				<ul class="ulBullet" style="margin-left:10px; margin-top:5px; height: 180px;">
+		  		<% @search_sub_cats.each do |category| %>
+						<li class="fltLeft" style="width: 240px; height: 138px; margin-left: 2px;">
+							
+							<%= link_to(url_for("/category_product/#{category.name}"),:remote=>true,:class=> "fltLeft cat-nov-col") do %>
+								<div class="fltLeft">
+									<img class="imageSize" src="<%= category.image %>">
+								</div>
+								<div class=" labelSize" style="position:relative; top:10px; left:100px;">
+									<span class="arrow-right"><b><%= category.name %></b></span>
+								</div>
+							<% end %>							
+						</li>
+					<% end %>
+				</ul>
+				<% end %>
+			</div>
+
+			<!-- => Display products for a particular searched category.
+				   => It will display all products corresponding to searched element, if belong to.
+			 -->
+			
+			<% if @search_products && @search_sub_cats %>
+				<%= content_tag :div, nil, :class=> 'cat-margin' %>
+			<% else %>
+				<%= content_tag :div, nil, :class=> 'prod-margin' %>
+			<% end %>
+				<ul class="ulBullet" style="">
+					<% @search_products.each do |product| %>
+							<li class="fltLeft" style="width: 200px; height: 320px; margin-left: 2px; margin-bottom:10px;">								
+								<%= link_to(url_for("/product_info/#{product.name}"),:remote => true, :class=> "fltLeft pr-hov-col") do %>
+									<div class="fltLeft">
+										<img class="pr-image-size" src="<%= product.image %>" style="margin-left:7px;">
+									</div>
+
+									<div class="pr-title" style="font-size: 13px;">
+										<span style="margin-top:5px;"><%= product.name %></span>
+									</div>
+
+									<div class="pr-border-top">
+										<span style="font-size:17px;">
+											<%= product.price %>
+										</span>
+									</div>
+
+									<div class="pr-border-top" style="font-size: 13px;">
+										<span class="pr-desc">
+											<%= product.description %>
+										</span>
+									</div>
+								<%end%>								
+							</li>
+					<% end %>
+				</ul>
+			</div>
+
+
+		</div>
+
+		<div class="col-md-2" style="margin-top: 13px;">
+		</div>
+	</div>
+</div>

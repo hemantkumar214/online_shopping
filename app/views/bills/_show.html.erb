@@ -57,10 +57,6 @@ No detail Available
   <br>
   <% session[:temporary_shopping_cart]=[] %>
   <input type="button" id="print" onclick="javascript:print()" value="Print">
-  <br><br>
-  <% if user_signed_in?  && current_user.role_id== 1 %>
-    <%= link_to 'Back', bills_path, :remote=>true %>
-    <%else %>
-        <%= link_to 'Back', '/' %>
-      <%end%>
+  <br><br> 
+  <%= link_to 'Back', bills_path, :remote=>true %>       
 </h4>

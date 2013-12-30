@@ -1,7 +1,7 @@
 <div>
 	<div class="row">	
 		<% if flash[:notice] %>
-    	<div class="notice alert-message warning"><%= flash[:notice] %></div>
+    	<div class="notice alert-message warning" style="color:red;"><%= flash[:notice] %></div>
     	<%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
   	<% end %>
   	<% flash[:error] = flash[:errors] = flash[:notice] = nil %>
@@ -30,8 +30,8 @@
 				<div class="col-md-2"><%= product.name  %></div>
 				<div class="col-md-1">
 					<%= form_for(:quant,:url=>homes_add_in_cart_path(product.id),:id=>'#{product.id}',:remote=>true) do |f| %>
-						<%= f.text_field :total_request , :value=> "#{quantity}",:style=>'width:40%;' %><br>
-						<%= f.submit "save"  %> 
+						<%= f.text_field :total_request , :value=> "#{quantity}",:style=>'width:40%;' %>
+						<%= f.submit "save", :class=>"btn btn-link",:style=>"margin-left:-10%;"  %> 
 					<% end %>
 				</div>				
 				<div class="col-md-1"><%= product.price  %></div>

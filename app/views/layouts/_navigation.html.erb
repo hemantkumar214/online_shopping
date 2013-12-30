@@ -12,7 +12,7 @@
 
 				<li style="margin-top: 13px; float: left;">
 					<ul class="ulBullet">
-						<%= form_tag homes_search_path, :method => :post do %>
+						<%= form_tag homes_search_path, :method => :post,:remote=>true do %>
 							<li style="margin-top: 13px; float: left;">
 								<%= text_field_tag :search, params[:search], :class=>"form-control search-field", :placeholder => "search product, category or brand" %>
 							</li>

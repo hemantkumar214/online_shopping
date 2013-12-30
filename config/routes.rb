@@ -29,7 +29,7 @@ get '/bills/display_bill', :controller => 'bills', :action => 'display_bill'
   resources :addresses
   resources :products
   resources :product_details
-  devise_for :users, :controllers => { registrations: 'users/registrations'  }    
+  devise_for :users, :controllers => { registrations: 'users/registrations',sessions: 'users/sessions'}     
   get "addresses/index"
   get "roles/index"
   get "categories/index"

@@ -1,8 +1,8 @@
 class HomesController < ApplicationController
-  
   def index
   	@categories = Category.all
   end
+
   def show  	
   end
 
@@ -19,7 +19,6 @@ class HomesController < ApplicationController
   def user_details
     @user_details=User.all
   end
-
 
   def subcategory
   	category_id=Category.find_by_name(params[:id]).id
@@ -54,7 +53,6 @@ class HomesController < ApplicationController
       flash[:notice] = "#{Product.find(product_id).name} is not available in this quantity"            
     end
   end
-
 
 ## checking tyhe availabilty
   def check_availabilty(product_id,total_request=1,update_through_cart=0) 

@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+<<<<<<< HEAD
+//= require_tree .
+=======
 //= require_tree .
 
 // added javasript for null input, button should be disable.
@@ -30,3 +33,4 @@ $( document ).ready(function() {
    		$('.btn.btn-primary.btn-size').attr('disabled', true);   
 	});
 });
+>>>>>>> 53bad81492a039c4d406832fbbfe1ac12a2779ae

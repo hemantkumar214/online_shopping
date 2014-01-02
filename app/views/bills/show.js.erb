@@ -3,3 +3,4 @@ $("#admin_page").html("<%= escape_javascript(render("show")) %>");
 <% else %>
 $("#user_page").html("<%= escape_javascript(render("show")) %>");
 <% end %>
+$("#cart_details").replaceWith(" <%= escape_javascript(render("/carts/form")) %>");

@@ -4,7 +4,7 @@
 		<div class="col-md-4">
 			<div class="prod-img-div">
 				<img class="prod-image-size" src="<%= @product.image %>">
-			</div>
+			</div>			
 		</div>
 		<div class="col-md-4">
 			<div >
@@ -46,7 +46,7 @@
 					</div>
 			</div>
 			<div style="margin-top:10%;">
-				<b><h4><%= link_to "Back", subcategory_category_product_path(Category.find(@product.category_id).name),:remote=>true %></h4></b>
+				<b><h4><%= link_to '',subcategory_category_product_path(Category.find(@product.category_id).name),:remote=>true, :class=>"glyphicon glyphicon-arrow-left",:style=>'font-size:48px;margin-left:-400px;' %></h4></b>
 			</div>
 		</div>
 

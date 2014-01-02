@@ -7,7 +7,7 @@
 					<span><%= @cat_name %> Products</span>
 				</div>
 				<div class="nav-section-cat-list">
-			  	
+			  <%= link_to '',homes_subcategory_path(Category.find(@parent_id).name),:remote=>true, :class=>"glyphicon glyphicon-arrow-left",:style=>'font-size:48px;margin-top:100%;' %>	
 				</div>
 			</div>
 
@@ -20,7 +20,7 @@
 			<hr class="sub">
 			<div class="">
 				<ul class="ulBullet" style="margin-left:10px; margin-top:5px;">
-					<% @products.each do |product| %>
+					<% @products.each do |product| %>					
 							<li class="fltLeft" style="width: 200px; height: 320px; margin-left: 2px; margin-bottom:10px;">								
 								<%= link_to(url_for("/product_info/#{product.name}"),:remote => true, :class=> "fltLeft pr-hov-col") do %>
 									<div class="fltLeft">
@@ -44,8 +44,7 @@
 							</li>
 					<% end %>
 				</ul>
-			</div>
-
+			</div>			
 		</div>
 	</div>
 </div>

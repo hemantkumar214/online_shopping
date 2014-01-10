@@ -6,13 +6,16 @@
 				<img class="prod-image-size" src="<%= @product.image %>">
 			</div>			
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4" style="margin-left:20px;">
 			<div >
 					<h1 itemprop="name" style="font-size: 21px; font-weight: normal"> <%= @product.name %> </h1>
 					<hr class="pro-name">
 					<div style="margin-top:10px; font-size: 15px;">
 						<span><%= @product.description %></span>
 					</div><br><br>
+					<div>
+						<span class="fnt-big price text-deco">Rs. <%= @product.price %></span>
+					</div>
 					<% enable=1 %>
 					<% if(!check_availabilty(@product.id)) %>
 					<% enable=0 %>

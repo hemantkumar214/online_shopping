@@ -109,7 +109,9 @@ a.cont {
     text-decoration: none;
     background-color: #fff;
 }
-
+.prod-img-div{
+    width: 405px; 
+}
 .prod-image-size{
     max-width: 400px;
 }
@@ -140,4 +142,14 @@ hr.pro-name {
 }
 .prod-margin{
     margin-top: 5px;
+}
+.price {
+    color: #565656;
+}
+.text-deco {
+    font-weight: bold;
+}
+
+.fnt-big {
+    font-size: 22px;
 }

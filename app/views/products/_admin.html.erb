@@ -33,9 +33,9 @@
               <td><%= product.description %></td>
               <td><%= product.price %></td>
               <td><%= product.image %></td>
-              <td><%= link_to 'Show', product, :class=>"mrg_left" %></td>
-              <td><%= link_to 'Edit', edit_product_path(product), :class=>"mrg_left" %></td>
-              <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mrg_left" %></td>
+              <td><%= link_to 'Show', product, :class=>"mrg_left",:remote=>true %></td>
+              <td><%= link_to 'Edit', edit_product_path(product),:remote=>true, :class=>"mrg_left" %></td>
+              <td><%= link_to 'Destroy', product, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"mrg_left" %></td>
             </tr>
           <% end %>
         </tbody>

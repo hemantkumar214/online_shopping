@@ -7,10 +7,10 @@ class HomesController < ApplicationController
   end
 
   def destroy
-  @user=User.find(params[:id])
-  @user.destroy
-  redirect_to homes_path
- end
+    @user=User.find(params[:id])
+    @user.destroy
+    redirect_to homes_path
+  end
  
  # action for genearting bills;
   def generate_bill  
@@ -55,7 +55,7 @@ class HomesController < ApplicationController
     end
   end
 
-## checking tyhe availabilty
+## checking the availabilty
   def check_availabilty(product_id,total_request=1,update_through_cart=0) 
     requested_product=0 
     requested_product += total_request    
@@ -97,40 +97,8 @@ class HomesController < ApplicationController
   helper_method :check_availabilty
 
   def search
-    # code for searching category and display related content 
-    @search_categories = Category.search do
-      fulltext (params[:search]).strip
-    end
-
-    if @search_categories
-      @result_categories_result = @search_categories.results
-      @result_categories_result.each do |cat_id|
-        @srch_cat_id = cat_id
-      end
-
-      if @srch_cat_id
-        @search_sub_cats = Category.where(parent_id: @srch_cat_id)
-        @child_categories = Category.where('id not in(?)', Category.all.map(&:parent_id)- [nil]).to_a
-        @child_categories.each do |child_category|
-          if child_category == @srch_cat_id
-            @search_cat_product = @srch_cat_id
-          end
-        end
-        if @search_cat_product
-          cat_id=Category.find_by_name(@search_cat_product.name).id
-          @search_products = Product.where(category_id: cat_id)
-        else
-          @search_cat_product = nil
-          @search_products = nil
-        end
-      end
-    end
-    #code for searching products 
-    @srch_products = Product.search do
-      fulltext (params[:search]).strip
-    end
-    if @srch_products
-      @search_products_result = @srch_products.results
-    end
+    # code for searching category and display related content
+    searching_keyword=params[:search]
+    @search_products_result, @search_sub_cats, @search_cat_product, @search_products = HomesHelper.search_product_by_keyword(searching_keyword)    
   end
 end

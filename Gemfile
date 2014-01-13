@@ -45,6 +45,7 @@ end
 
 gem "prototype-rails", "~> 4.0.0"
 
+gem "remotipart", "~> 1.0"
 ## gem for searching
 gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development

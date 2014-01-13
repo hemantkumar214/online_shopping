@@ -37,7 +37,6 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-
     if @address.update_attributes(get_address_parameter)
       redirect_to addresses_path, :notice => "Address has successfully updated"
     else

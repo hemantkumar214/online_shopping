@@ -1,6 +1,7 @@
+// it will differentiate between admin and user bills for ajax calling
 <% if current_user.role_id==1  %>
-$("#admin_page").html("<%= escape_javascript(render("show")) %>");
+	$("#admin_page").html("<%= escape_javascript(render("show")) %>");
 <% else %>
-$("#user_page").html("<%= escape_javascript(render("show")) %>");
+	$("#user_page").html("<%= escape_javascript(render("show")) %>");
 <% end %>
 $("#cart_details").replaceWith(" <%= escape_javascript(render("/carts/form")) %>");

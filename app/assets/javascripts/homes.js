@@ -1,3 +1,4 @@
+// slide representation jQuery code for moving image in slide one bye one
 $(document).ready(function(){
   $('.slider4').bxSlider({
     slideWidth: 250,

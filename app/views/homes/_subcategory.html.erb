@@ -1,11 +1,14 @@
 <div class="container" style="margin-top: 70px;">
-	
 	<div class="row">
 		<div class="col-md-3" style="margin-top: 13px;">
 			<div class="nav-section first-section">
+
+				<!-- This code is displaying a category which has last child categories -->
 				<div class="nav-section-title" style="font-size: 16px; font-weight: bold; text-transform: uppercase;">
 					<span><%= @cat_name %> brands</span>
 				</div>
+
+				<!-- This code is for displaying last child categories for That category -->
 				<div class="nav-section-cat-list">
 			  	<% @categories2.each do |category| %>							
 						<%= link_to(url_for("/category_product/#{category.name}"),:remote => true, :class=> "hov-col cont nav-section-item tpadding5 bpadding5", :style=>'display: block;') do %>
@@ -24,6 +27,7 @@
 			</h1>
 			<hr class="sub">
 			<div class="">
+				<!-- This code will display all product for that category by which it showing it -->
 				<ul class="ulBullet" style="margin-left:10px; margin-top:5px;">
 				<% @categories2.each do |category| %>	
 					<% @products=Product.where(:category_id=>category.id) %>

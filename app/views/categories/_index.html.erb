@@ -1,8 +1,8 @@
-<% if user_signed_in?  && current_user.role_id== 1 %>
+<!-- This page will display all categories which contain Category -->
 <div class="container" style="margin-top: 75px;">
-<%= button_to 'New Category', new_category_path, method: :get,:remote=>true, :class => 'anchor btn btn-primary' %>
+  <%= button_to 'New Category', new_category_path, method: :get,:remote=>true, :class => 'anchor btn btn-primary' %>
   <div class="row">
- <div class="col-md-12">
+    <div class="col-md-12">
       <div class="" style="background-color: #424242; height: 40px; margin-top: 20px;">
         <h2 class="header" style="background-color: #424242; height: 38px;">
           <span style="text-transform: uppercase; font-size: 16px; color: #ffffff; margin-left: 10px;">Listing Categories</span>
@@ -10,6 +10,7 @@
         </h2>
       </div>
 
+      <!-- This table will show all category records -->
       <table class="table table-striped">
         <thead>
           <tr>
@@ -21,7 +22,6 @@
             <th></th>
           </tr>
         </thead>
-
         <tbody>
           <% @categories.each do |category| %>
             <tr>
@@ -36,10 +36,7 @@
           <% end %>
         </tbody>
       </table>
-
-      <br>
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<%end%>

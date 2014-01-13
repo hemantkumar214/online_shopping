@@ -4,10 +4,10 @@
 		<div class="col-md-3" style="margin-top: 13px;">
 			<div class="nav-section first-section">
 				<div class="nav-section-title" style="font-size: 16px; font-weight: bold; text-transform: uppercase;">
-					<span><%= @cat_name %> Products</span>
+					<span><%= @category.name %> Products</span>
 				</div>
 				<div class="nav-section-cat-list">
-			  <%= link_to '',homes_subcategory_path(Category.find(@parent_id).name),:remote=>true, :class=>"glyphicon glyphicon-arrow-left",:style=>'font-size:48px;margin-top:100%;' %>	
+			  <%= link_to '',homes_subcategory_path(Category.find(@category.parent_id).name),:remote=>true, :class=>"glyphicon glyphicon-arrow-left",:style=>'font-size:48px;margin-top:100%;' %>	
 				</div>
 			</div>
 
@@ -15,12 +15,12 @@
 		
 		<div class="col-md-9" style="margin-top: 13px;">
 			<h1 class="header" style="text-transform: uppercase; font-size: 28px; font-weight: bold; margin-left: 10px; color: #848484">
-				<%= @cat_name %>
+				<%= @category.name %>
 			</h1>
 			<hr class="sub">
 			<div class="">
 				<ul class="ulBullet" style="margin-left:10px; margin-top:5px;">
-					<% @products.each do |product| %>					
+					<% @category.products.each do |product| %>					
 							<li class="fltLeft" style="width: 200px; height: 320px; margin-left: 2px; margin-bottom:10px;">								
 								<%= link_to(url_for("/product_info/#{product.name}"),:remote => true, :class=> "fltLeft pr-hov-col") do %>
 									<div class="fltLeft">

@@ -17,27 +17,21 @@ class HomesController < ApplicationController
   end
 
   def user_details
-    @user_details=User.all
+    @user_details=User.includes(:addresses)
   end
 
   def subcategory
-  	category_id=Category.find_by_name(params[:id]).id
-    @categories2 = Category.where(parent_id: category_id)
-    @products = Product.where(category_id: category_id)
-    @cat_name = params[:id]
+  	@category=Category.find_by_name(params[:id])
+    @sub_categories = Category.includes(:products).where(parent_id: @category.id)
   end
 
   def category_product
-    category_id=Category.find_by_name(params[:id]).id
-    @products = Product.where(category_id: category_id)
-    @cat_name = params[:id]
-    @parent_id=Category.find(category_id).parent_id
+    @category=Category.includes(:products).find_by_name(params[:id])
   end
 
   def product_info
-    product_id=Product.find_by_name(params[:id]).id
-    @product = Product.find(product_id)
-  end
+    @product=Product.find_by_name(params[:id])
+   end
 
   # function to update the session and add in cart
   def add_in_cart    

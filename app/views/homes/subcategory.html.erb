@@ -25,8 +25,7 @@
 			<div class="">
 				<ul class="ulBullet" style="margin-left:10px; margin-top:5px;">
 				<% @categories2.each do |category| %>	
-					<% @products=Product.where(:category_id=>category.id) %>
-						<% @products.each do |product| %>
+						<% @categories2.products.each do |product| %>
 								<li class="fltLeft" style="width: 200px; height: 320px; margin-left: 2px; margin-bottom:10px;">
 									<a class="fltLeft pr-hov-col" href="/product_info/<%= product.name %>" data-tracking-id="">
 										<div class="fltLeft">

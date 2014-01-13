@@ -1,6 +1,6 @@
 class ProductDetailsController < ApplicationController
   def index
-  	@product_details = ProductDetail.all
+  	@product_details = ProductDetail.includes(:product)
   end
 
   def new
@@ -13,7 +13,7 @@ class ProductDetailsController < ApplicationController
   end
 
   def show
-  	@product_detail = ProductDetail.find(params[:id])
+  	@product_detail = ProductDetail.includes(:product).find(params[:id])
   end
 
   def edit

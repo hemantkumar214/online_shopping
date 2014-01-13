@@ -1,7 +1,7 @@
 class BillsController < ApplicationController
   def index
     if current_user.role_id==1
-  	@bills=Bill.all
+  	@bills=Bill.includes(:user)
   else
     @bills=Bill.where(user_id: current_user.id)
   end

@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    #to display all the categories in the index page
-    @categories = Category.all
+    #to display all the categories in the index page    
+    @categories = Category.all       
   end
 
   def new
@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-      @category=Category.new(get_category_parameter).save!
-      redirect_to :categories
+    @category=Category.new(get_category_parameter).save!      
+    #redirect_to categories_path
   end
 
   def edit
@@ -29,11 +29,10 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-
     if @category.update_attributes(get_category_parameter)
-      redirect_to categories_path, :notice => "Category has successfully updated"
+      #redirect_to categories_path, :notice => "Category has successfully updated"
     else
-      render 'edit'
+     render 'edit'
     end
   end
 

@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(get_product_parameter).save!
-    redirect_to products_path
+    #redirect_to products_path
   end
 
   def edit
@@ -30,9 +30,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(get_product_parameter)
-      redirect_to products_path, :notice => "Product has successfully updated"
+     # redirect_to products_path, :notice => "Product has successfully updated"
     else
-      render 'edit'
+     # render 'edit'
     end
   end
 

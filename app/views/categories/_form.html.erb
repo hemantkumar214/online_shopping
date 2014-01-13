@@ -1,4 +1,4 @@
-<%= form_for @category, :remote=>true  do |f| %>
+<%= form_for @category, :html => { :multipart => true }, :remote=>true  do |f| %>
 <%= f.label :Category %>
 <%= f.text_field :name,  :class=> "form-control"%><br/>
 <div class="controls mrg_top">

@@ -1,9 +1,6 @@
 class ProductDetailsController < ApplicationController
   def index
-    @product_details = ProductDetail.includes(:product).all
-    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5555"
-    p @product_details[0]
-    p "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    @product_details = ProductDetail.includes(:product).all    
   end
 
   def new

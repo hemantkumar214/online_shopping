@@ -1,6 +1,6 @@
 class ProductDetailsController < ApplicationController
   def index
-  	@product_details = ProductDetail.all
+  	@product_details = ProductDetail.includes(:product)
   end
 
   def new
@@ -13,7 +13,7 @@ class ProductDetailsController < ApplicationController
   end
 
   def show
-  	@product_detail = ProductDetail.find(params[:id])
+  	@product_detail = ProductDetail.includes(:product).find(params[:id])
   end
 
   def edit
@@ -28,7 +28,6 @@ class ProductDetailsController < ApplicationController
 
   def update
     @product_detail = ProductDetail.find(params[:id])
-
     if @product_detail.update_attributes(get_product_detail_parameter)
       redirect_to product_details_path, :notice => "Product Detail has successfully updated"
     else
@@ -38,6 +37,6 @@ class ProductDetailsController < ApplicationController
 
   private 
   def get_product_detail_parameter 
-  	params.require(:product_detail).permit(:product_id, :unique_id);
+  	params.require(:product_detail).permit(:product_id, :unique_id,:available);
   end
 end

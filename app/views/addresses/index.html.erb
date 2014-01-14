@@ -24,7 +24,7 @@
           <!-- Here this code displaying records of address -->
           <% @addresses.each do |address| %>
             <tr>                   
-              <td><%= User.find(address.user_id).name  %></td>
+              <td><%= address.user.name%></td>
               <td><%= address.address %></td>
               <td><%= address.landmark %></td>
               <td><%= address.city %></td>

@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   def index
     #get all the adress in the index page
-  	@addresses = Address.all
+  	@addresses = Address.includes(:user)
   end
 
   def new
@@ -22,7 +22,7 @@ class AddressesController < ApplicationController
   end
 
   def show
-  	@address = Address.find(params[:id])
+  	@address = Address.includes(:user).find(params[:id])
   end
 
   def edit
@@ -37,7 +37,6 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-
     if @address.update_attributes(get_address_parameter)
       redirect_to addresses_path, :notice => "Address has successfully updated"
     else

@@ -28,7 +28,7 @@
               <td><%= user.id %></td>
               <td><%= user.email %> </td>
               <td><%= user.phone_no %> </td>
-              <td><% Address.where(user_id: user.id).to_a.each do |address| %>
+              <td><% user.addresses.each do |address| %>
                 <%= address.address  %>
                 <%= address.landmark  %>
                 <%= address.city  %>

@@ -1,3 +1,4 @@
+<% @products=Product.all %>
 <% if user_signed_in?  && current_user.role_id== 1 %>
 <div class="container" style="margin-top: 75px;">
 <%= button_to 'Add New Product', new_product_path ,:method=> :get,:remote=>true, :class=>"btn btn-primary"%>
@@ -28,14 +29,14 @@
         <tbody>
           <% @products.each do |product| %>
             <tr>
-              <td><%= Category.find(product.category_id).name %></td>
+              <td><%= product.category.name %></td>
               <td><%= product.name %></td>
               <td><%= product.description %></td>
               <td><%= product.price %></td>
               <td><%= ProductDetail.where(:product_id=>product.id, available: 1).count  %> </td>
               <td> <img src="<%= product.image %>" style="height:50px;width:50px;" alt="product image"/></td>
               <td><%= link_to 'Show', product, :class=>"mrg_left", :remote=>true %></td>
-              <td><%= link_to '', edit_product_path(product), :class=>"glyphicon glyphicon-edit",:title=>"edit", :remote=>true %></td>
+              <td><%= link_to '', edit_product_path(product), :class=>"glyphicon glyphicon-edit", :title=>"edit", :remote=>true %></td>
               <td><%= link_to '', product, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash",:title=>"delete" %></td>
             </tr>
           <% end %>

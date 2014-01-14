@@ -26,7 +26,7 @@
         <tbody>
           <% @product_details.each do |product_detail| %>
             <tr>
-              <td><%= Product.find(product_detail.product_id).name %></td>
+              <td><%= product_detail.product.name %></td>
               <td><%= product_detail.unique_id %></td>
               <td><%= product_detail.available %> </td>
               <td><%= link_to 'Show', product_detail, :remote=>true, :class=>"mrg_left" %>

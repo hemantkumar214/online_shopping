@@ -5,12 +5,12 @@
 
 				<!-- This code is displaying a category which has last child categories -->
 				<div class="nav-section-title" style="font-size: 16px; font-weight: bold; text-transform: uppercase;">
-					<span><%= @cat_name %> brands</span>
+					<span><%= @category.name %> brands</span>
 				</div>
 
 				<!-- This code is for displaying last child categories for That category -->
 				<div class="nav-section-cat-list">
-			  	<% @categories2.each do |category| %>							
+			  	<% @sub_categories.each do |category| %>							
 						<%= link_to(url_for("/category_product/#{category.name}"),:remote => true, :class=> "hov-col cont nav-section-item tpadding5 bpadding5", :style=>'display: block;') do %>
 						<%= category.name %>
 						<% end %>
@@ -23,15 +23,14 @@
 		
 		<div class="col-md-9" style="margin-top: 13px;">
 			<h1 class="header" style="text-transform: uppercase; font-size: 28px; font-weight: bold; margin-left: 10px; color: #848484">
-				<%= @cat_name %>
+				<%= @category.name %>
 			</h1>
 			<hr class="sub">
 			<div class="">
 				<!-- This code will display all product for that category by which it showing it -->
 				<ul class="ulBullet" style="margin-left:10px; margin-top:5px;">
-				<% @categories2.each do |category| %>	
-					<% @products=Product.where(:category_id=>category.id) %>
-						<% @products.each do |product| %>
+				<% @sub_categories.each do |category| %>	
+						<% category.products.each do |product| %>
 								<li class="fltLeft" style="width: 200px; height: 320px; margin-left: 2px; margin-bottom:10px;">
 									<%= link_to(url_for("/product_info/#{product.name}"), :remote=>true, :class=> "fltLeft pr-hov-col") do %>
 									

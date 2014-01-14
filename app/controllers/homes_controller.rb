@@ -36,6 +36,7 @@ class HomesController < ApplicationController
   # function to update the session and add in cart
   def add_in_cart    
     product_id=params[:id].to_i
+    @product=Product.find(product_id)
     total_request=1
     update_through_cart=0     
     if params.has_key?(:quant)     

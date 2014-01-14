@@ -30,7 +30,9 @@
               <td><%= bill.date %></td>
               <td><%= bill.total_amount %></td>
               <td><%= link_to 'Show', bill_path(bill), :remote=>true %></td>
+              <% if current_user.role_id==1 %>
               <td><%= link_to '', bill, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash",:title=>"delete"%></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

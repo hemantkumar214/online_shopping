@@ -3,8 +3,7 @@
 		<% if flash[:notice] %>
     	<div class="notice alert-message warning" style="color:red;"><%= flash[:notice] %></div>
     	<%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
-  	<% end %>
-  	<% flash[:error] = flash[:errors] = flash[:notice] = nil %>
+  	<% end %>  	
 		<div class="col-md-2"><b>PRODUCT</b></div>
 		<div class="col-md-2"><b>ITEM</b></div>
 		<div class="col-md-1"><b>QTY</b></div>

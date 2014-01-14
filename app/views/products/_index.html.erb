@@ -1,10 +1,9 @@
+<!-- This page will show all product records -->
 <% @products=Product.all %>
-<% if user_signed_in?  && current_user.role_id== 1 %>
 <div class="container" style="margin-top: 75px;">
 <%= button_to 'Add New Product', new_product_path ,:method=> :get,:remote=>true, :class=>"btn btn-primary"%>
 <div class="row">
    <div class="col-md-12">
-
       <div class="" style="background-color: #424242; height: 40px; margin-top: 20px;">
         <h2 class="header" style="background-color: #424242; height: 38px;">
           <span style="text-transform: uppercase; font-size: 16px; color: #ffffff; margin-left: 10px;">Listing Product</span>
@@ -26,6 +25,7 @@
           </tr>
         </thead>
 
+        <!-- Here it will display all products which contain in @products -->
         <tbody>
           <% @products.each do |product| %>
             <tr>
@@ -42,12 +42,7 @@
           <% end %>
         </tbody>
       </table>
-
-      <br>
-
-     
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<%end%>

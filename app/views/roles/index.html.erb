@@ -1,3 +1,4 @@
+<!-- This page will display all roles for users -->
 <div class="container" style="margin-top: 75px;">
   <div class="row">
     <div class="col-md-3"></div>
@@ -12,7 +13,6 @@
             <th></th>
           </tr>
         </thead>
-
         <tbody>
           <% @roles.each do |role| %>
             <tr>
@@ -24,9 +24,6 @@
           <% end %>
         </tbody>
       </table>
-
-      <br>
-
       <%= link_to 'New Role', new_role_path %>
     </div>
     <div class="col-md-3"></div>

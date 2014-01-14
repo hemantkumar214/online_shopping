@@ -1,18 +1,21 @@
+<!-- This form will create new records for products -->
 <%= form_for @product,:html => { :multipart => true }, :remote=>true do |f| %> 
-<%= f.label :category %>
-<div class="controls mrg_top">
-	<%= f.collection_select :category_id,Category.where('id not in(?)', Category.all.map(&:parent_id)- [nil]), :id, :name,  {:prompt => "Select Sub Category"},{ "style" => "width:200px;height:30px" } %>
-	</select>
-</div>
-<%= f.label :name %>
-<%= f.text_field :name,  :class=> "form-control"%>
-<%= f.label :description %>
-<%= f.text_field :description,  :class=> "form-control"%>
-<%= f.label :price %>
-<%= f.text_field :price,  :class=> "form-control"%>
-<br/>
-<%= f.label :image %>
-<%= f.file_field :image%>
-<br/>
-<%= f.submit :class=>"btn btn-primary mrg_top" %>
+	<%= f.label :category %>
+
+	<!-- This div will show many-to-many relation for categories -->
+	<div class="controls mrg_top">
+		<%= f.collection_select :category_id,Category.where('id not in(?)', Category.all.map(&:parent_id)- [nil]), :id, :name,  {:prompt => "Select Sub Category"},{ "style" => "width:200px;height:30px" } %>
+		</select>
+	</div>
+	<%= f.label :name %>
+	<%= f.text_field :name,  :class=> "form-control"%>
+	<%= f.label :description %>
+	<%= f.text_field :description,  :class=> "form-control"%>
+	<%= f.label :price %>
+	<%= f.text_field :price,  :class=> "form-control"%>
+	<br/>
+	<%= f.label :image %>
+	<%= f.file_field :image%>
+	<br/>
+	<%= f.submit :class=>"btn btn-primary mrg_top" %>
 <% end %>

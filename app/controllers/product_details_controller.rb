@@ -1,29 +1,32 @@
 class ProductDetailsController < ApplicationController
   def index
-  	@product_details = ProductDetail.includes(:product)
+    @product_details = ProductDetail.includes(:product).all
+    p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5555"
+    p @product_details[0]
+    p "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
   end
 
   def new
-  	@product_detail = ProductDetail.new
+    @product_detail = ProductDetail.new
   end
 
   def create
-  	@product_detail = ProductDetail.new(get_product_detail_parameter).save!
-  	redirect_to product_details_path
+    @product_detail = ProductDetail.new(get_product_detail_parameter).save!
+    redirect_to product_details_path
   end
 
   def show
-  	@product_detail = ProductDetail.includes(:product).find(params[:id])
+    @product_detail = ProductDetail.includes(:product).find(params[:id])
   end
 
   def edit
-  	@product_detail = ProductDetail.find(params[:id])
+    @product_detail = ProductDetail.find(params[:id])
   end
 
   def destroy
-  	@product_detail = ProductDetail.find(params[:id])
-  	@product_detail.destroy
-    @product_details = ProductDetail.all  	
+    @product_detail = ProductDetail.find(params[:id])
+    @product_detail.destroy
+    @product_details = ProductDetail.all    
   end
 
   def update
@@ -37,6 +40,6 @@ class ProductDetailsController < ApplicationController
 
   private 
   def get_product_detail_parameter 
-  	params.require(:product_detail).permit(:product_id, :unique_id,:available);
+    params.require(:product_detail).permit(:product_id, :unique_id,:available);
   end
 end

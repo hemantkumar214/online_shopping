@@ -1,6 +1,9 @@
+<!-- This page code is main root page -->
 <div class="container" id="user_page" style="margin-top: 70px;">
 	<div class="row">
 		<div class="col-md-8" style="margin-top: 13px;">
+
+			<!-- This code is used to display images using slider -->
 			<div id="sliderFrame">
         <div id="slider">
             <a class="lazyImage" href="/assets/arm-candies.jpg" ></a>
@@ -33,10 +36,9 @@
 		</div>
 	</div>
 
-
 	<div class="row">
 		<div class="col-md-8" style="margin-top: 13px;">
-			<!-- It will display Categories -->
+			<!-- It will display Parent Categories which parent is nil -->
       <% @categories.each do |category| %>
         <% if category.parent_id==nil %>
 			   	<div class="" style="background-color: #424242; height: 40px;">
@@ -46,7 +48,7 @@
 						</h2>
 					</div>
 
-					<!-- It will display slides for categories with thier categories -->
+					<!-- It will display slides for categories with thier parent categories -->
 					<div class="slider4" style="height: 400px; margin-left: 10px;">
 						<% @categories.each do |category2| %>
 				  		<% if category2.parent_id==category.id %>
@@ -68,8 +70,6 @@
 		</div>
 
 			<div class="col-md-4" style="margin-top: 13px;">
-			
-				
 			</div>
 	</div>
 </div>

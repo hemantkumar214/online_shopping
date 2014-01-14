@@ -1,9 +1,10 @@
-<% if user_signed_in?  && current_user.role_id== 1 %>
+<!-- It will edit category data -->
 <div class="container" style="margin-top: 75px;">
 	<div class="row">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<h1> Editing Brands</h1>
+			<!-- It will add form for editing -->
 			<%= render 'form' %>
 			<%= link_to 'Show', category_path, :remote=>true %> |
 			<%= link_to 'Back', categories_path, :remote=>true %>
@@ -11,4 +12,3 @@
 		<div class="col-md-3"></div>
 	</div>
 </div>
-<%end%>

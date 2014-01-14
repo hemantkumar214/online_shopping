@@ -1,25 +1,23 @@
-<% @products=Product.all %>
-<% if user_signed_in?  && current_user.role_id== 1 %>
+<!-- This page will display all product details -->
 <div class="container" style="margin-top: 75px;">
-<%= button_to 'Add New Product', new_product_path ,:method=> :get,:remote=>true, :class=>"btn btn-primary"%>
-<div class="row">
-   <div class="col-md-12">
+<%= button_to 'New product\'s detail', new_product_detail_path,:method=> :get,:remote=>true,:class=>"btn btn-primary" %>
 
+  <div class="row">
+    <div class="col-md-12">
       <div class="" style="background-color: #424242; height: 40px; margin-top: 20px;">
         <h2 class="header" style="background-color: #424242; height: 38px;">
-          <span style="text-transform: uppercase; font-size: 16px; color: #ffffff; margin-left: 10px;">Listing Product</span>
+          <span style="text-transform: uppercase; font-size: 16px; color: #ffffff; margin-left: 10px;">Listing Product Details</span>
           <span style="font-size: 14px; color: #ffffff; margin-right: 10px; float: right; margin-top: 12px;"></span>
         </h2>
       </div>
+
+      <!-- Table will show all records of product_details -->
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Category</th>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Image</th>
+            <th>Product</th>
+            <th>Unique Identity number</th>
+            <th> Avilability </th>
             <th></th>
             <th></th>
             <th></th>
@@ -27,27 +25,22 @@
         </thead>
 
         <tbody>
-          <% @products.each do |product| %>
+          <% @product_details.each do |product_detail| %>
             <tr>
-              <td><%= product.category.name %></td>
-              <td><%= product.name %></td>
-              <td><%= product.description %></td>
-              <td><%= product.price %></td>
-              <td><%= ProductDetail.where(:product_id=>product.id, available: 1).count  %> </td>
-              <td> <img src="<%= product.image %>" style="height:50px;width:50px;" alt="product image"/></td>
-              <td><%= link_to 'Show', product, :class=>"mrg_left", :remote=>true %></td>
-              <td><%= link_to '', edit_product_path(product), :class=>"glyphicon glyphicon-edit", :title=>"edit", :remote=>true %></td>
-              <td><%= link_to '', product, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash",:title=>"delete" %></td>
+              <td><%= product_detail.product.name %></td>
+              <td><%= product_detail.unique_id %></td>
+              <td><%= product_detail.available %> </td>
+              <td><%= link_to 'Show', product_detail, :remote=>true, :class=>"mrg_left" %>
+              </td>
+              <td>
+                <%= link_to '', edit_product_detail_path(product_detail), :class=>"glyphicon glyphicon-edit",:title=>"edit",:remote=>true %>
+              </td>
+              <td><%= link_to '', product_detail, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash", :title=>"delete" %></td>
             </tr>
           <% end %>
         </tbody>
-      </table>
-
-      <br>
-
-     
+      </table> 
     </div>
     <div class="col-md-2"></div>
   </div>
 </div>
-<%end%>

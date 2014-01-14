@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 <!-- Form for inserting and editing data -->
+<%= form_for @category, :remote=>true  do |f| %>
+	<%= f.label :Category %>
+	<%= f.text_field :name,  :class=> "form-control"%><br/>
+
+	<!-- It will select multiple records for many-to-many relation -->
+	<div class="controls mrg_top">
+		<%= f.collection_select :parent_id, Category.all, :id, :name, {:prompt => "Select Sub Category"},
+=======
 <%= form_for @category, :html => { :multipart => true }, :remote=>true  do |f| %>
 <%= f.label :Category %>
 <%= f.text_field :name,  :class=> "form-control"%><br/>
 <div class="controls mrg_top">
 	<%= f.collection_select :parent_id, Category.all, :id, :name, {:prompt => "Select Sub Category"},
+>>>>>>> 68e92ac2909c479d4d60ed4f9fe584544d2992e2
 	{ "style" => "width:200px;height:30px" } %>
 		</select>
 	</div><br/>

@@ -1,4 +1,4 @@
-<% if user_signed_in?  && current_user.role_id== 1 %>
+<!-- This page will display a particular record -->
 <div class="container" style="margin-top: 75px;">
 	<div class="row">
 		<div class="col-md-3"></div>
@@ -8,22 +8,17 @@
 			  <strong>Product:</strong>
 			  <%= @product_detail.product.name %>
 			</p>
-
 			<p>
 			  <strong>Unique Identity:</strong>
 			  <%= @product_detail.unique_id %>
 			</p>
-
 			<p>
 			  <strong>Availability:</strong>
 			  <%= @product_detail.available %>
 			</p>
-
-
 			<%= link_to 'Edit', edit_product_detail_path(@product_detail), :remote=>true %> |
 			<%= link_to 'Back', product_details_path, :remote=>true %>
 		</div>
 		<div class="col-md-3"></div>
 	</div>
 </div>
-<%end%>

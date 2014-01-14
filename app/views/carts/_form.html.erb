@@ -25,19 +25,23 @@
 				<% total_amount += product.price * quantity %>
 				
 				<div class="row">					
-				<div class="col-md-2 "><img class="image-size" src="<%= product.image  %>" ></div>		
-				<div class="col-md-2"><%= product.name  %></div>
-				<div class="col-md-1">
-					<%= form_for(:quant,:url=>homes_add_in_cart_path(product.id),:id=>'#{product.id}',:remote=>true) do |f| %>
-						<%= f.text_field :total_request , :value=> "#{quantity}",:style=>'width:40%;' %>
-						<%= f.submit "save", :class=>"btn btn-link",:style=>"margin-left:-10%;"  %> 
-					<% end %>
-				</div>				
-				<div class="col-md-1"><%= product.price  %></div>
-				<div class="col-md-1"><%= product.description  %></div>
-				<div class="col-md-1"><%= product.price*quantity  %></div>
-				<div class="col-md-1"><%= link_to '', carts_update_path(:product_id=>product.id), :remote=>true, :class=> 'glyphicon glyphicon-remove-circle'%></div>	
-			</div>
+					<div class="col-md-2 ">
+						<img class="image-size" src="<%= product.image  %>" >
+					</div>		
+					<div class="col-md-2">
+						<%= product.name  %>
+					</div>
+					<div class="col-md-1">
+						<%= form_for(:quant,:url=>homes_add_in_cart_path(product.id),:id=>'#{product.id}',:remote=>true) do |f| %>
+							<%= f.text_field :total_request , :value=> "#{quantity}",:style=>'width:40%;' %>
+							<%= f.submit "save", :class=>"btn btn-link",:style=>"margin-left:-10%;"  %> 
+						<% end %>
+					</div>				
+					<div class="col-md-1"><%= product.price  %></div>
+					<div class="col-md-1"><%= product.description  %></div>
+					<div class="col-md-1"><%= product.price*quantity  %></div>
+					<div class="col-md-1"><%= link_to '', carts_update_path(:product_id=>product.id), :remote=>true, :class=> 'glyphicon glyphicon-remove-circle'%></div>	
+				</div>
 			<br>
 		<% end -%>
 		<br>

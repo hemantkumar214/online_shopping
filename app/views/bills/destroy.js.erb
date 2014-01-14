@@ -1,5 +1,8 @@
+// it will differentiate between admin and user bills for ajax calling
 <% if current_user.role_id==1  %>
-$("#admin_page").html("<%= escape_javascript(render(:partial => "index")) %>");
+	// It will display bill for user
+	$("#admin_page").html("<%= escape_javascript(render(:partial => "index")) %>");
 <% else %>
-$("#user_page").html("<%= escape_javascript(render(:partial => "index")) %>");
+	// It will display bill for admin
+	$("#user_page").html("<%= escape_javascript(render(:partial => "index")) %>");
 <% end %>

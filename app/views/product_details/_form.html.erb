@@ -1,13 +1,14 @@
+<!-- This form is for creating product details -->
 <%= form_for @product_detail,:remote=>true  do |f| %>
-<%= f.label :Product %>
-<div class="controls mrg_top">
-	<%= f.collection_select :product_id, Product.all, :id, :name, {:prompt => "Select product_detail"} ,{ "style" => "width:200px;height:30px" }%>
-	</select>
-</div><br/>
-<%= f.label :unique_id %>
-<%= f.text_field :unique_id,  :class=> "form-control"%>
-<br/>
-<%= f.label :availabilitity %>
-<%= f.text_field :available,  :class=> "form-control"%><br/>
-<%= f.submit :class=>"btn btn-primary mrg_top" %>
+	<%= f.label :Product %>
+	<div class="controls mrg_top">
+		<%= f.collection_select :product_id, Product.all, :id, :name, {:prompt => "Select product_detail"} ,{ "style" => "width:200px;height:30px" }%>
+		</select>
+	</div><br/>
+	<%= f.label :unique_id %>
+	<%= f.text_field :unique_id,  :class=> "form-control"%>
+	<br/>
+	<%= f.label :availabilitity %>
+	<%= f.text_field :available,  :class=> "form-control"%><br/>
+	<%= f.submit :class=>"btn btn-primary mrg_top" %>
 <% end %>

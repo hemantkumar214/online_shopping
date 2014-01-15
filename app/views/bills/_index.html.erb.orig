@@ -1,0 +1,56 @@
+<!--Here It's index page for bill records -->
+<div class="container" style="margin-top: 75px;">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="" style="background-color: #424242; width=70px;height: 40px; margin-top: 20px;">
+          <h2 class="header" style="background-color: #424242; height: 38px;">
+            <span style="text-transform: uppercase; font-size: 16px; color: #ffffff; margin-left: 10px;">Listing bills</span>
+            <span style="font-size: 14px; color: #ffffff; margin-right: 10px; float: right; margin-top: 12px;"></span>
+          </h2>
+        </div>
+        <table class="table table-striped" style="margin-top:5px;">
+          <thead>
+            <tr>
+<<<<<<< HEAD
+              <td><%= bill.id %></td>        
+              <% if bill.user %>
+              <td><%= bill.user.name %></td>
+              <% else %>
+              <td>Nill </td>
+              <% end -%>
+              <td><%= bill.date %></td>
+              <td><%= bill.total_amount %></td>
+              <td><%= link_to 'Show', bill_path(bill), :remote=>true %></td>
+              <% if current_user.role_id==1 %>
+              <td><%= link_to '', bill, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash",:title=>"delete"%></td>
+              <% end %>
+=======
+              <th>Bill id</th>
+              <th>User Name</th>
+              <th>Date</th>
+              <th>Total Amount</th>
+>>>>>>> 7116338549b09aa01c73419cc2bad8f72ceea9fc
+            </tr>
+          </thead>
+          <tbody>
+            <!-- display all bill records -->
+            <% @bills.each do |bill| %>
+              <tr>
+                <td><%= bill.id %></td>        
+                <% if bill.user %>
+                <td><%= bill.user.name %></td>
+                <% else %>
+                <td>Nill </td>
+                <% end -%>
+                <td><%= bill.date %></td>
+                <td><%= bill.total_amount %></td>
+                <td><%= link_to 'Show', bill_path(bill), :remote=>true %></td>
+                <td><%= link_to '', bill, method: :delete,:remote=>true, data: { confirm: 'Are you sure?' }, :class=>"glyphicon glyphicon-trash",:title=>"delete"%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

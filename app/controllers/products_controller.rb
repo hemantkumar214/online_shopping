@@ -13,11 +13,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(get_product_parameter).save!
-    #redirect_to products_path
+    @products = Product.includes(:category).all    
   end
 
   def edit
     @product = Product.find(params[:id])
+
   end
 
   def destroy
@@ -28,11 +29,10 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-
     if @product.update_attributes(get_product_parameter)
-     # redirect_to products_path, :notice => "Product has successfully updated"
+      @products = Product.includes(:category).all     
     else
-     # render 'edit'
+      render 'edit'
     end
   end
 

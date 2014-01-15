@@ -2,7 +2,7 @@
 <div class="container" style="margin-top: 75px;">
 	<div class="row">
 		<div class="col-md-3"></div>
-		<div class="col-md-6">
+		<div class="col-md-6"><% p "hello"  %><%= p flash[:alert]%>
 			<h1> Editing Product</h1>
 			<%= render 'form' %>
 			<%= link_to 'Show', product_path,:remote=>true %> |

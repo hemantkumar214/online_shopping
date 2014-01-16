@@ -94,6 +94,18 @@ class HomesController < ApplicationController
   def search
     # code for searching category and display related content
     searching_keyword=params[:search]
-    @search_products_result, @search_sub_cats, @search_cat_product, @search_products = HomesHelper.search_product_by_keyword(searching_keyword)    
+    @category_results, @product_results = HomesHelper.search_keyword(searching_keyword)
+    
+    if @category_results != [] && @product_results == []
+      if @category_results[0].parent_id == nil
+        @root_child_categories = Category.where(parent_id: @category_results[0].id)
+      else
+        redirect_to "/subcategory/#{@category_results[0].name}"
+      end
+    elsif @category_results != [] && @product_results != []
+      redirect_to "/category_product/#{@category_results[0].name}"
+    elsif @category_results == [] && @product_results != []
+      redirect_to URI.encode("/product_info/#{@product_results[0].name}")
+    end
   end
 end

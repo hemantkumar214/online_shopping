@@ -12,10 +12,10 @@ OnlineShopping::Application.routes.draw do
   get "bills/show" 
   root 'homes#index'
   resources :bills
-get '/bills/display_bill', :controller => 'bills', :action => 'display_bill'
- get '/homes/generate_bill', :controller => 'homes', :action => 'generate_bill'
- get '/homes/subcategory/:id', :controller => 'homes', :action => 'subcategory'
- get '/homes/user_details', :controller => 'homes', :action => 'user_details'
+  get '/bills/display_bill', :controller => 'bills', :action => 'display_bill'
+  get '/homes/generate_bill', :controller => 'homes', :action => 'generate_bill'
+  get '/homes/subcategory/:id', :controller => 'homes', :action => 'subcategory'
+  get '/homes/user_details', :controller => 'homes', :action => 'user_details'
   resources :homes
 
   resources :carts do 

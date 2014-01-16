@@ -14,21 +14,20 @@
 			<div class="nav-section-cat-list">
 				<% if @category_results != [] && @product_results == [] %>
 					<% if @root_child_categories %>
-						<ul class="ulBullet" style="margin-left:10px; margin-top:5px; height: 180px;">
-				  		<% @root_child_categories.each do |category| %>
-								<li class="fltLeft" style="width: 240px; height: 138px; margin-left: 2px;">
-									<%= link_to(url_for("/category_product/#{category.name}"),:remote=>true,:class=> "fltLeft cat-nov-col") do %>
+						<% @root_child_categories.each do |category| %>
+							<div class="slide fltLeft" style="height: 190px;">
+								<%= link_to(url_for("subcategory/#{category.name}"),:remote => true) do %>
 										<div class="fltLeft">
 											<img class="imageSize" src="<%= category.image %>">
 										</div>
-										<div class=" labelSize" style="position:relative; top:10px; left:100px;">
+										<div class=" labelSize" style="position:relative; top:10px; left:60px;">
 											<span class="arrow-right"><b><%= category.name %></b></span>
 										</div>
 									<% end %>
-								</li>
-							<% end %>
-						</ul>
+							</div>
+						<% end %>
 					<% end %>
+				<% end %>
 			</div>
 		</div>
 

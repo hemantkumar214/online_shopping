@@ -13,7 +13,10 @@ class HomesController < ApplicationController
   end
  
  # action for genearting bills;
-  def generate_bill  
+  def generate_bill
+    if !user_signed_in?
+      render :js => "window.location = '/users/sign_in'"
+    end
   end
 
   def user_details

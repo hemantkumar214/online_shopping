@@ -1,0 +1,5 @@
+<% if current_user.role_id==1 %>
+	$("#admin_page").html(" <%= escape_javascript(render("edit")) %>");
+<% else %>
+	$("#user_page").html(" <%= escape_javascript(render("edit")) %>");
+<% end %>

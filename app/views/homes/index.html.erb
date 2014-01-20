@@ -1,6 +1,6 @@
 <!-- it will display main page accordint to user type -->
 <% if user_signed_in?  && current_user.role_id== 1 %>
-	<%= render 'homes/admin' %>
+	<%= render 'categories/index' %>
 <% else %>
 	<%= render 'homes/users' %>
 <% end %>

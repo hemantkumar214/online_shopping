@@ -6,8 +6,8 @@ gem 'rails_12factor', group: :production
 gem 'rails', '4.0.2'
 
 # Use mysql as the database for Active Record
-#gem 'mysql2'
-gem 'pg'
+gem 'mysql2', group: :development
+gem 'pg', group: :production
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 

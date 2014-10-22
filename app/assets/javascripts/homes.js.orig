@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-$("#mobiles").onclick
-{
-	
-}
-=======
-$('.carousel').carousel()
->>>>>>> c1bde8f863a25a389da240f8dcdcb9763b0e26a4

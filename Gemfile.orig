@@ -1,11 +1,21 @@
 source 'https://rubygems.org'
+<<<<<<< HEAD
+=======
+ruby '2.0.0'
+>>>>>>> acbe22d6cba84feee7e04f63fc8b3d3de39061c1
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 
 gem 'rails', '4.0.2'
 
 # Use mysql as the database for Active Record
+<<<<<<< HEAD
 gem 'mysql2'
+# gem 'pg'
+=======
+gem 'mysql2', group: :development
+gem 'pg', group: :production
+>>>>>>> acbe22d6cba84feee7e04f63fc8b3d3de39061c1
 
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
@@ -53,8 +63,6 @@ gem 'sunspot_rails'
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
 gem 'progress_bar'
-
-gem 'passenger'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
